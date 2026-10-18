@@ -1,6 +1,6 @@
 # Lỏ Tiệm
 
-Web tĩnh giới thiệu sản phẩm custom handmade cho xe máy (ốp chắn bùn hông, ốp máy, combo scrambler cho XSR 155, MT-15, Exciter, Winner) và dịch vụ custom theo yêu cầu. Không bán hàng trên web: khách mua qua Zalo / Facebook / TikTok hoặc link Shopee.
+Web tĩnh giới thiệu sản phẩm custom handmade cho xe máy (ốp chắn bùn hông, ốp máy, combo scrambler cho XSR 155, MT-15, Exciter, Winner) và dịch vụ custom theo yêu cầu. Không bán hàng trên web: khách nhắn shop qua Zalo / Facebook / TikTok để ship COD (rẻ nhất, mọi sản phẩm), hoặc mua trên Shopee / TikTok Shop (chỉ hàng phổ biến có `shopeeUrl` / `tiktokShopUrl`). TikTok (xem video, nhắn tin) và TikTok Shop (sàn) là hai kênh khác nhau.
 
 Yêu cầu đầy đủ: [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md). Cây thư mục và hướng dẫn sửa nội dung: [README.md](README.md). Đọc REQUIREMENTS trước khi thêm tính năng.
 

@@ -19,12 +19,14 @@ export const opPhuocDePhuXsr155: Product = {
   category: "op-phuoc",
   bikes: ["XSR155"],
   featured: false,
+  price: 2_000_000, // giá ship COD, giá khởi điểm
+  deposit: true, // hàng giá trị cao / custom: cọc trước
   // Ảnh mock. Có ảnh thật thì đổi sang: numberedImages(slug, "gallery", <số ảnh>), spinImages(slug)…
   thumbnail: mockImages(1)[0],
   spinImages: mockSpin(),
   gallery: mockImages(3),
   feedback: mockImages(6),
   installation: mockInstallation(), // TODO: thay bằng hướng dẫn thật (xem file combo-scrambler-classic-xsr155.ts)
-  // shopeeUrl: "https://shopee.vn/...", // link riêng của sản phẩm, bỏ trống thì dùng link shop
-  sections: ["spin360", "description", "buy", "gallery", "customCta", "feedback", "installation"],
+  // Không bán trên sàn, khách nhắn shop để đặt. Có bán thì thêm shopeeUrl / tiktokShopUrl
+  sections: ["spin360", "summary", "description", "buy", "gallery", "customCta", "feedback", "installation"],
 };

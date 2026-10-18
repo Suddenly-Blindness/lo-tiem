@@ -33,3 +33,18 @@ export function ShopeeIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+/** TikTok Shop (kênh bán hàng trên sàn, khác với TikTok để xem video / nhắn tin) */
+export function TikTokShopIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinejoin="round" aria-hidden {...props}>
+      <path d="M5 8h14l-1 12.4a1.6 1.6 0 0 1-1.6 1.5H7.6A1.6 1.6 0 0 1 6 20.4L5 8Z" />
+      <path d="M9 8V6.5a3 3 0 0 1 6 0V8" strokeLinecap="round" />
+      <path
+        fill="currentColor"
+        stroke="none"
+        d="M13.3 10.6c.1.9.7 1.5 1.6 1.6v1.3c-.6 0-1.1-.2-1.6-.5v2.8c0 1.6-1.4 2.6-2.9 2.2-1.7-.4-2.1-2.6-.8-3.6.5-.4 1-.5 1.6-.5v1.3c-.3-.1-.6 0-.8.1-.6.3-.6 1.3.1 1.6.6.2 1.3-.2 1.3-.9v-5.4h1.5Z"
+      />
+    </svg>
+  );
+}

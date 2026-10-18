@@ -1,22 +1,17 @@
 "use client";
 
+import { Section } from "@/components/ui/Section";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocalized } from "@/hooks/useLocalized";
 import type { Product } from "@/types";
-import { PaintColors } from "./PaintColors";
 
+/** Mô tả chi tiết, section riêng rộng hết trang. */
 export function Description({ product }: { product: Product }) {
   const { t } = useLanguage();
   const l = useLocalized();
   return (
-    <div>
-      <p className="text-caption text-muted">
-        {t("product.bikes")}: {product.bikes.length ? product.bikes.join(", ") : t("product.allBikes")}
-      </p>
-      <h1 className="text-h1 mt-2">{l(product.name)}</h1>
-      <p className="text-body mt-4 text-gray-700">{l(product.shortDescription)}</p>
-      <PaintColors colors={product.colors} />
-      <div className="text-body mt-6 whitespace-pre-line">{l(product.description)}</div>
-    </div>
+    <Section title={t("product.description")}>
+      <div className="text-body whitespace-pre-line">{l(product.description)}</div>
+    </Section>
   );
 }

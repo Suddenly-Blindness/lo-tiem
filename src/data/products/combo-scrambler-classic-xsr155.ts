@@ -18,6 +18,8 @@ export const comboScramblerClassicXsr155: Product = {
   category: "combo",
   bikes: ["XSR155"],
   featured: true,
+  price: 2_000_000, // giá ship COD, giá khởi điểm
+  deposit: true, // hàng giá trị cao / custom: cọc trước
   // Ảnh mock. Có ảnh thật thì đổi sang: numberedImages(slug, "gallery", <số ảnh>), spinImages(slug)…
   thumbnail: mockImages(1)[0],
   spinImages: mockSpin(),
@@ -32,6 +34,8 @@ export const comboScramblerClassicXsr155: Product = {
     // YouTube: id video sau "v=". TikTok: dãy số cuối link video
     video: { type: "youtube", src: "YOUTUBE_VIDEO_ID" },
   },
-  // shopeeUrl: "https://shopee.vn/...", // link riêng của sản phẩm, bỏ trống thì dùng link shop
-  sections: ["spin360", "description", "buy", "gallery", "customCta", "feedback", "installation"],
+  // Link sàn (mock). Chỉ hàng phổ biến mới bán trên sàn; bỏ 2 dòng này nếu sản phẩm chỉ bán qua tin nhắn
+  shopeeUrl: "https://shopee.vn/product/SHOP_ID/ITEM_ID",
+  tiktokShopUrl: "https://shop.tiktok.com/view/product/PRODUCT_ID",
+  sections: ["spin360", "summary", "description", "buy", "gallery", "customCta", "feedback", "installation"],
 };
