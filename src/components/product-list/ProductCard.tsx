@@ -3,10 +3,12 @@
 import Link from "next/link";
 
 import { ImageBox } from "@/components/ui/ImageBox";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useLocalized } from "@/hooks/useLocalized";
 import type { Product } from "@/types";
 
 export function ProductCard({ product }: { product: Product }) {
+  const { t } = useLanguage();
   const l = useLocalized();
   return (
     <Link href={`/san-pham/${product.slug}/`} className="group block">
@@ -15,7 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
         alt={l(product.name)}
         className="transition-transform duration-500 group-hover:scale-[1.02]"
       />
-      <p className="text-caption mt-3 text-muted">{product.bikes.join(" · ")}</p>
+      <p className="text-caption mt-3 text-muted">{product.bikes.length ? product.bikes.join(" · ") : t("product.allBikes")}</p>
       <h3 className="text-h3 mt-1 group-hover:underline">{l(product.name)}</h3>
     </Link>
   );

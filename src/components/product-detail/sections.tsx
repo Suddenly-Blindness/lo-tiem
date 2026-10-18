@@ -23,7 +23,7 @@ export function ProductSectionView({ name, product }: { name: ProductSection; pr
     description: <Description product={product} />,
     buy: <BuyButtons shopeeUrl={product.shopeeUrl} />,
     gallery: <Gallery images={product.gallery} alt={alt} />,
-    feedback: <Feedback items={product.feedback} />,
+    feedback: <Feedback images={product.feedback} />,
     installation: <Installation installation={product.installation} />,
     customCta: <CustomCta />,
   };

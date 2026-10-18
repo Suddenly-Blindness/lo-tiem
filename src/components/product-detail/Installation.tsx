@@ -1,6 +1,7 @@
 "use client";
 
 import { ImageBox } from "@/components/ui/ImageBox";
+import { useLightbox } from "@/components/ui/Lightbox";
 import { Section } from "@/components/ui/Section";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocalized } from "@/hooks/useLocalized";
@@ -10,6 +11,8 @@ import { VideoEmbed } from "./VideoEmbed";
 export function Installation({ installation }: { installation?: ProductInstallation }) {
   const { t } = useLanguage();
   const l = useLocalized();
+  const stepImages = installation?.steps.flatMap((s) => (s.image ? [s.image] : [])) ?? [];
+  const { open, lightbox } = useLightbox(stepImages, t("product.installation"));
   if (!installation) return null;
   return (
     <Section id="lap-dat" title={t("product.installation")}>
@@ -18,7 +21,14 @@ export function Installation({ installation }: { installation?: ProductInstallat
       <ol className="grid gap-8 md:grid-cols-2">
         {installation.steps.map((step, i) => (
           <li key={i} className="flex flex-col gap-3">
-            {step.image && <ImageBox src={step.image} alt="" ratio="aspect-[4/3]" />}
+            {step.image && (
+              <ImageBox
+                src={step.image}
+                alt={`${t("product.step")} ${i + 1}`}
+                ratio="aspect-[4/3]"
+                onClick={() => open(stepImages.indexOf(step.image!))}
+              />
+            )}
             <p className="text-caption text-muted">
               {t("product.step")} {i + 1}
             </p>
@@ -33,6 +43,7 @@ export function Installation({ installation }: { installation?: ProductInstallat
           <VideoEmbed video={installation.video} title={t("product.video")} />
         </div>
       )}
+      {lightbox}
     </Section>
   );
 }

@@ -29,6 +29,8 @@ Next 16 khác các bản cũ: `params` của page là `Promise`, phải `await`.
 - Route động phải có `generateStaticParams` và `dynamicParams = false`, như `src/app/san-pham/[slug]/page.tsx`.
 - Không có form gửi dữ liệu. Mọi liên hệ đi qua link mạng xã hội trong `src/data/site.ts`.
 - Ảnh dùng thẻ `<img>` thường, qua component `ImageBox` (`images.unoptimized: true`). Không dùng `next/image` cho ảnh sản phẩm.
+- Ảnh nội dung (gallery, feedback, bước lắp đặt, mẫu custom) phải bấm được để phóng to: `const { open, lightbox } = useLightbox(images, alt)` từ `src/components/ui/Lightbox.tsx`, truyền `onClick={() => open(i)}` cho `ImageBox` và render `{lightbox}`.
+- Feedback chỉ là danh sách ảnh xe khách (`feedback: string[]`), ẩn danh, không có tên hay nhận xét.
 - `trailingSlash: true`: link nội bộ viết có dấu `/` ở cuối (`/san-pham/`, `/custom/`).
 - Nội dung (sản phẩm, ảnh, feedback) nằm trong code. Không thêm CMS, database hay fetch dữ liệu từ ngoài.
 
@@ -43,7 +45,7 @@ Next 16 khác các bản cũ: `params` của page là `Promise`, phải `await`.
 
 ### Trang chi tiết sản phẩm
 
-Mỗi sản phẩm là một file `src/data/products/<slug>.ts`, đăng ký trong `src/data/products/index.ts`. Ảnh nằm ở `public/images/products/<slug>/{spin,gallery,feedback,install}/`. Thư mục mẫu là `_mau/`.
+Mỗi sản phẩm là một file `src/data/products/<slug>.ts`, đăng ký trong `src/data/products/index.ts`. Ảnh nằm ở `public/images/products/<slug>/{spin,gallery,feedback,install}/`. Thư mục mẫu là `_mau/`. Sản phẩm chưa có ảnh thật dùng ảnh mock chung trong `public/images/mock/` qua `src/lib/mock-images.ts`. Không tạo thư mục ảnh rỗng hay `.gitkeep` cho từng sản phẩm.
 
 - `product.sections`: danh sách section theo thứ tự hiển thị.
 - `product.layout`: tên layout trong `src/components/product-detail/layouts/index.ts` (`default`, `stacked`).
@@ -72,5 +74,5 @@ Tiếng Việt là mặc định, có thêm tiếng Anh. Không có route `/en`:
 ## Lưu ý khác
 
 - `allowedDevOrigins` trong `next.config.ts` cho phép mở bản dev qua ngrok. Không gửi link ngrok cho khách: hãy build rồi deploy thư mục `out/` lên host tĩnh (Netlify, Cloudflare Pages, Vercel).
-- Thông tin shop trong `src/data/site.ts` và sản phẩm mẫu `combo-scrambler-xsr155` hiện là dữ liệu giả. Đừng coi là thông tin thật.
+- Thông tin shop trong `src/data/site.ts` và sản phẩm mẫu `combo-scrambler-classic-xsr155` hiện là dữ liệu giả. Đừng coi là thông tin thật.
 - Ảnh dùng định dạng `.webp`. Ảnh xoay 3D đặt tên `01.webp` … `08.webp`.

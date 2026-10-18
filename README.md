@@ -22,6 +22,7 @@ lo-tiem/
 │   ├── icons/social/
 │   ├── videos/                       Video hướng dẫn (chỉ file nhỏ)
 │   └── images/
+│       ├── mock/                     Ảnh tạm dùng chung khi chưa có ảnh thật
 │       ├── brand/                    Logo
 │       ├── home/                     banner.webp, custom.webp
 │       ├── custom/                   Ảnh các mẫu custom đã làm
@@ -40,7 +41,7 @@ lo-tiem/
     │   └── custom/page.tsx           Trang custom
     ├── components/
     │   ├── layout/                   Header, Footer, LanguageToggle, SocialLinks
-    │   ├── ui/                       Button, Container, Section, ImageBox
+    │   ├── ui/                       Button, Container, Section, ImageBox, Lightbox
     │   ├── icons/                    Icon Zalo, Facebook, TikTok, Shopee
     │   ├── home/                     Banner, FeaturedProducts, CustomHighlight
     │   ├── product-list/             ProductListView, ProductFilter, ProductGrid, ProductCard
@@ -76,7 +77,7 @@ lo-tiem/
 
 ## Thêm sản phẩm mới
 
-1. Copy `public/images/products/_mau/` thành `public/images/products/<slug>/` rồi bỏ ảnh `.webp` vào.
-2. Copy `src/data/products/combo-scrambler-xsr155.ts` thành `<slug>.ts`, sửa nội dung.
+1. Copy `public/images/products/_mau/` thành `public/images/products/<slug>/` rồi bỏ ảnh `.webp` vào. Trong file data, đổi ảnh mock (`mockImages`, `mockSpin`) sang `numberedImages(slug, ...)`, `spinImages(slug)`. Chưa có ảnh thì cứ để ảnh mock.
+2. Copy `src/data/products/combo-scrambler-classic-xsr155.ts` thành `<slug>.ts`, sửa nội dung.
 3. Thêm sản phẩm vào mảng `products` trong `src/data/products/index.ts`.
 4. Sắp xếp `sections` để đổi thứ tự section; đặt `layout: "stacked"` hoặc một layout tự viết nếu cần giao diện khác.

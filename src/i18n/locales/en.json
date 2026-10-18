@@ -20,11 +20,15 @@
   "product.spinHint": "Drag to rotate",
   "product.description": "Description",
   "product.gallery": "Product photos",
-  "product.feedback": "Customer feedback",
+  "product.feedback": "Customer bikes",
+  "product.feedbackHint": "Photos of customers' bikes with this part fitted. Tap a photo to enlarge.",
   "product.installation": "Installation guide",
   "product.step": "Step",
   "product.video": "Video guide",
   "product.bikes": "Fits",
+  "product.allBikes": "Many bike models",
+  "product.colors": "Paint finish",
+  "product.colorCustom": "Other colours on request",
   "product.buyTitle": "Buy",
   "product.buyHint": "Message us or buy on Shopee.",
   "product.customTitle": "Need it for another bike, or your own design?",
@@ -57,5 +61,8 @@
   "social.tiktok": "TikTok",
   "social.shopee": "Shopee",
   "notFound.title": "Page not found",
-  "notFound.back": "Back to home"
+  "notFound.back": "Back to home",
+  "lightbox.close": "Close",
+  "lightbox.prev": "Previous photo",
+  "lightbox.next": "Next photo"
 }

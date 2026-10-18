@@ -20,11 +20,15 @@
   "product.spinHint": "Kéo để xoay",
   "product.description": "Mô tả",
   "product.gallery": "Hình ảnh sản phẩm",
-  "product.feedback": "Khách hàng nói gì",
+  "product.feedback": "Xe khách đã lắp",
+  "product.feedbackHint": "Ảnh xe khách đã lắp sản phẩm. Bấm vào ảnh để xem lớn.",
   "product.installation": "Hướng dẫn lắp đặt",
   "product.step": "Bước",
   "product.video": "Video hướng dẫn",
   "product.bikes": "Dòng xe",
+  "product.allBikes": "Nhiều dòng xe",
+  "product.colors": "Màu sơn",
+  "product.colorCustom": "Màu khác theo yêu cầu",
   "product.buyTitle": "Mua hàng",
   "product.buyHint": "Nhắn tin cho shop hoặc mua qua Shopee.",
   "product.customTitle": "Muốn làm cho xe khác hoặc thiết kế riêng?",
@@ -57,5 +61,8 @@
   "social.tiktok": "TikTok",
   "social.shopee": "Shopee",
   "notFound.title": "Không tìm thấy trang",
-  "notFound.back": "Về trang chủ"
+  "notFound.back": "Về trang chủ",
+  "lightbox.close": "Đóng",
+  "lightbox.prev": "Ảnh trước",
+  "lightbox.next": "Ảnh sau"
 }

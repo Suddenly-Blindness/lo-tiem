@@ -1,32 +1,31 @@
 "use client";
 
 import { ImageBox } from "@/components/ui/ImageBox";
+import { useLightbox } from "@/components/ui/Lightbox";
 import { Section } from "@/components/ui/Section";
 import { useLanguage } from "@/hooks/useLanguage";
-import { useLocalized } from "@/hooks/useLocalized";
-import type { ProductFeedback } from "@/types";
 
-export function Feedback({ items }: { items: ProductFeedback[] }) {
+/** Ảnh xe khách đã lắp sản phẩm. Ẩn danh, không kèm nhận xét. */
+export function Feedback({ images }: { images: string[] }) {
   const { t } = useLanguage();
-  const l = useLocalized();
-  if (!items.length) return null;
+  const { open, lightbox } = useLightbox(images, t("product.feedback"));
+  if (!images.length) return null;
   return (
     <Section title={t("product.feedback")} tone="muted">
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((f) => (
-          <figure key={f.image} className="bg-paper">
-            <ImageBox src={f.image} alt={f.customer ?? ""} ratio="aspect-[4/5]" />
-            {(f.comment || f.customer) && (
-              <figcaption className="p-4">
-                {f.comment && <p className="text-body">“{l(f.comment)}”</p>}
-                <p className="text-caption mt-2 text-muted">
-                  {[f.customer, f.bike].filter(Boolean).join(" · ")}
-                </p>
-              </figcaption>
-            )}
-          </figure>
+      <p className="text-body -mt-3 mb-6 text-gray-600 md:-mt-6 md:mb-10">{t("product.feedbackHint")}</p>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3 lg:grid-cols-4">
+        {images.map((src, i) => (
+          <ImageBox
+            key={`${i}-${src}`}
+            src={src}
+            alt={`${t("product.feedback")} ${i + 1}`}
+            ratio="aspect-[4/5]"
+            className="bg-gray-200"
+            onClick={() => open(i)}
+          />
         ))}
       </div>
+      {lightbox}
     </Section>
   );
 }
