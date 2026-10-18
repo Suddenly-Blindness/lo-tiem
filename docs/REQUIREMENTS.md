@@ -15,10 +15,26 @@ Danh sách sản phẩm ban đầu xem ở mục [4.1](#41-danh-sách-sản-ph�
 
 Website dùng để **giới thiệu sản phẩm và dịch vụ** (kiểu blog / catalogue). Web **không bán hàng trực tiếp**: không có giỏ hàng, thanh toán hay tài khoản.
 
-Khách muốn mua thì:
+Khách muốn mua thì có 2 cách:
 
-- Nhắn qua **Zalo / Facebook / TikTok**
-- Hoặc bấm **link Shopee** gắn ở từng sản phẩm
+| Cách mua | Áp dụng | Ghi chú |
+|---|---|---|
+| Nhắn shop qua **Zalo / Facebook / TikTok**, ship **COD** (nhận hàng rồi trả tiền) | Mọi sản phẩm, kể cả hàng custom | Giá tốt nhất (rẻ hơn trên sàn, nhưng trên web chỉ ghi "giá tốt nhất", không so sánh với sàn). Là cách mua được ưu tiên trên web |
+| Mua trên **Shopee / TikTok Shop** | Chỉ các sản phẩm phổ biến | Sản phẩm ít phổ biến và hàng custom không có trên sàn, khách phải nhắn shop |
+
+Giá: web hiển thị **giá ship COD**, là giá khởi điểm ("Từ 500.000 ₫"). Giá có thể tăng theo yêu cầu custom, màu sơn…, khách nhắn shop để được tư vấn. Giá trên sàn khác giá COD và không hiển thị trên web. Mức giá hiện tại: các loại ốp hông từ 500.000 ₫; đầu đèn, ốp máy, ốp phuộc trước từ 1.500.000 ₫; ốp phuộc kèm dè phụ, combo từ 2.000.000 ₫.
+
+Đặt cọc: một số món giá trị cao và hàng custom phải đặt cọc trước (field `deposit`). Với các món này, khung COD ghi "Đặt cọc trước, phần còn lại thanh toán khi nhận hàng." thay cho "nhận hàng rồi mới thanh toán". Trang Custom ghi rõ hàng custom cần đặt cọc trước khi làm. Hiện đánh dấu cọc: Ốp hông snap-in, Đầu đèn XSR155, Ốp phuộc kèm dè phụ, Combo Scrambler Classic.
+
+Chính sách của shop:
+
+- Lắp đặt miễn phí tận nơi tại Hà Nội
+- Đổi trả nếu sản phẩm bị lỗi
+
+**TikTok** và **TikTok Shop** là hai kênh khác nhau:
+
+- **TikTok**: trang TikTok của shop, để khách xem video và nhắn tin. Một link chung cho cả shop (`src/data/site.ts`)
+- **TikTok Shop**: gian hàng trên sàn, để mua sản phẩm. Mỗi sản phẩm có link riêng (`tiktokShopUrl`), như Shopee (`shopeeUrl`)
 
 ## 2. Yêu cầu chung
 
@@ -47,7 +63,7 @@ Khách muốn mua thì:
 - Logo Lỏ Tiệm
 - Menu: Trang chủ, Sản phẩm, Custom
 - Nút chuyển ngôn ngữ VI / EN
-- Trên mobile là menu hamburger
+- Trên mobile là menu hamburger. Nút VI / EN nằm ngoài menu, cạnh nút hamburger
 
 **Footer**
 - Thông tin liên hệ: số điện thoại, email
@@ -65,7 +81,7 @@ Khách muốn mua thì:
 
 ### 3.3 Danh sách sản phẩm
 
-- Lưới card sản phẩm: ảnh đại diện, tên, dòng xe tương thích
+- Lưới card sản phẩm: ảnh đại diện, tên (đậm), dòng xe tương thích, giá COD ("Từ …", chữ thường cỡ nhỏ màu xám để không tranh với tên)
 - Lọc theo nhóm sản phẩm (Ốp hông / chắn bùn hông, Custom, Ốp máy, Ốp phuộc, Combo) và theo dòng xe (XSR155, Exciter 155, MT-15, Winner, FZ150i)
 - Thứ tự nhóm trên bộ lọc giống thứ tự ở mục 4.1
 - Bấm vào card → trang chi tiết
@@ -78,6 +94,7 @@ Nội dung một sản phẩm:
 | Nội dung | Mô tả |
 |---|---|
 | Tên sản phẩm | vi / en |
+| Giá | Giá COD dạng "Từ 500.000 ₫" dưới tên. Chưa có giá thì hiện "Liên hệ". Khung COD ở phần mua hàng nhắc lại giá, kèm ghi chú "Giá có thể thay đổi theo yêu cầu custom, màu sơn…" (không lặp ý đã có ở tiêu đề khung). Không ghi gì về giá trên sàn |
 | Mô tả | vi / en. Gồm mô tả ngắn (1 câu, hiện trên đầu trang) và mô tả chi tiết nhiều đoạn (công dụng, đặc điểm, gợi ý liên hệ tư vấn) |
 | Màu sơn | Ô màu cho từng màu có sẵn (đen bóng, đen nhám, đen nhám mịn) kèm tên màu, và ô "Màu khác theo yêu cầu" dẫn sang `/custom`. Mặc định sản phẩm có đủ 3 màu, có thể giới hạn bằng field `colors` |
 | Xoay giả 3D | 8 ảnh chụp quanh sản phẩm. Kéo chuột / vuốt để xoay |
@@ -85,13 +102,13 @@ Nội dung một sản phẩm:
 | Ảnh feedback | Ảnh xe khách đã lắp sản phẩm, thường nhiều ảnh. Ẩn danh: không ghi tên khách, không có lời nhận xét. Hiển thị dạng lưới ảnh, bấm vào để phóng to |
 | Hướng dẫn lắp đặt | Section riêng gồm văn bản, ảnh theo từng bước và video |
 | Custom / thiết kế cho xe khác | Block nổi bật trong trang: "Muốn làm cho xe khác hoặc thiết kế riêng?" → `/custom` |
-| Mua hàng | Các nút Zalo / Facebook / TikTok / Shopee |
+| Mua hàng | 2 khung. Khung "Ship COD (giá tốt nhất)" nổi bật nhất (nền đen, nút trắng đặc) để khách ưu tiên chọn: giá, ghi chú giá, cách thanh toán (COD hoặc cọc trước), nút Zalo / Facebook / TikTok. Nếu có link sàn: khung "Hoặc mua trên sàn" (nền trắng, viền mảnh) với nút Shopee / TikTok Shop. Nếu không có link sàn: không có tiêu đề hay khung, chỉ một dòng "Sản phẩm này không bán trên Shopee / TikTok Shop. Nhắn shop để đặt hàng ship COD.", ngăn với chính sách bên dưới bằng đường kẻ (cả mobile và desktop). Mobile: 2 khung xếp dọc, chính sách ở dưới. Desktop: trái là khung COD, phải là phần mua trên sàn (không khung) và chính sách ngay bên dưới, cách bằng đường kẻ. Chính sách shop có icon: lắp đặt miễn phí tận nơi tại Hà Nội, đổi trả nếu sản phẩm bị lỗi |
 
 **Layout riêng cho từng sản phẩm:** có 2 mức tuỳ biến.
 
 1. `sections`: danh sách section theo thứ tự hiển thị. Muốn bỏ hay đảo vị trí section thì chỉ sửa mảng này.
 2. `layout`: chọn bố cục trang. Có sẵn:
-   - `default`: đầu trang chia 2 cột (xoay 3D bên trái; mô tả và nút mua bên phải), các section còn lại xếp dọc bên dưới
+   - `default`: đầu trang chia 2 cột: xoay 3D bên trái (desktop: dính màn hình khi cuộn), bên phải là tóm tắt (`summary`: dòng xe, tên, mô tả ngắn, màu sơn), căn giữa theo chiều dọc. Hàng 2 cột này gồm các section nhỏ (`spin360`, `summary`, `buy`) đứng liền nhau ở đầu `sections`. Mô tả chi tiết (`description`) là section riêng rộng hết khung như các section khác, để mô tả dài không làm cột phải dài hơn hẳn cột ảnh. Chữ một cột. Mặc định khối mua hàng và chính sách (`buy`) nằm ngay dưới mô tả, cũng là section chuẩn nền xám (tiêu đề lớn, rộng hết khung, khung COD nền trắng): desktop chia 2 cột, trái là khung nhắn shop / COD, phải là mua trên sàn và chính sách. Các section còn lại xếp dọc theo thứ tự trong `sections`
    - `stacked`: mọi section xếp dọc, full width
 
    Sản phẩm cần giao diện khác hẳn thì tạo component mới trong `src/components/product-detail/layouts/` và đăng ký vào `layouts/index.ts`.
@@ -104,7 +121,7 @@ Nội dung một sản phẩm:
   - Khách mô tả yêu cầu bằng văn bản
   - Khách gửi ảnh tham khảo hoặc ảnh xe hiện tại
 - Danh sách sản phẩm thuộc nhóm Custom (`category: "custom"`, hiện có Ốp hông snap-in và Đầu đèn XSR155), dùng chung card với trang danh sách sản phẩm, bấm vào là sang trang chi tiết. Không có gallery ảnh rời: mẫu custom nào muốn giới thiệu thì tạo thành sản phẩm
-- CTA: nhắn Zalo / Facebook / TikTok để gửi yêu cầu. Không có form upload vì web tĩnh không có backend
+- CTA: nhắn Zalo / Facebook / TikTok để gửi yêu cầu (hàng custom không bán trên sàn). Không có form upload vì web tĩnh không có backend
 
 ### 3.6 Xem ảnh phóng to
 
@@ -127,7 +144,7 @@ type Localized = { vi: string; en: string };
 type PaintColor = "den-bong" | "den-nham" | "den-nham-min";
 
 type ProductSection =
-  | "spin360" | "gallery" | "description" | "feedback"
+  | "spin360" | "summary" | "description" | "gallery" | "feedback"
   | "installation" | "customCta" | "buy";
 
 type Product = {
@@ -138,6 +155,8 @@ type Product = {
   category: "op-hong" | "custom" | "op-may" | "op-phuoc" | "combo";
   bikes: string[];
   featured?: boolean;
+  price?: number;              // giá ship COD (VND), giá khởi điểm. Bỏ trống = "Liên hệ"
+  deposit?: boolean;           // cần đặt cọc trước (hàng giá trị cao / custom)
   thumbnail: string;
   spinImages: string[];
   gallery: string[];
@@ -148,7 +167,8 @@ type Product = {
     video?: { type: "youtube" | "tiktok" | "file"; src: string };
   };
   colors?: PaintColor[];       // bỏ trống = đủ 3 màu
-  shopeeUrl?: string;          // link Shopee riêng, bỏ trống thì dùng link shop
+  shopeeUrl?: string;          // link sản phẩm trên Shopee, bỏ trống = không bán trên Shopee
+  tiktokShopUrl?: string;      // link sản phẩm trên TikTok Shop, bỏ trống = không bán trên TikTok Shop
   sections: ProductSection[];  // thứ tự hiển thị
   layout?: string;             // "default" | "stacked" | layout tự thêm
 };

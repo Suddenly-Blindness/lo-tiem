@@ -48,15 +48,18 @@ export function Header() {
           <LanguageToggle />
         </nav>
 
-        <button
-          type="button"
-          aria-label={t(open ? "nav.closeMenu" : "nav.openMenu")}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="flex size-10 items-center justify-center md:hidden"
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          <LanguageToggle />
+          <button
+            type="button"
+            aria-label={t(open ? "nav.closeMenu" : "nav.openMenu")}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="flex size-10 items-center justify-center"
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
+        </div>
       </Container>
 
       {open && (
@@ -75,7 +78,6 @@ export function Header() {
                 {t(key)}
               </Link>
             ))}
-            <LanguageToggle className="py-4" />
           </Container>
         </nav>
       )}

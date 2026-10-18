@@ -19,12 +19,13 @@ export const opHongFz150i: Product = {
   category: "op-hong",
   bikes: ["FZ150i"],
   featured: false,
+  price: 500_000, // giá ship COD, giá khởi điểm
   // Ảnh mock. Có ảnh thật thì đổi sang: numberedImages(slug, "gallery", <số ảnh>), spinImages(slug)…
   thumbnail: mockImages(1)[0],
   spinImages: mockSpin(),
   gallery: mockImages(3),
   feedback: mockImages(6),
   installation: mockInstallation(), // TODO: thay bằng hướng dẫn thật (xem file combo-scrambler-classic-xsr155.ts)
-  // shopeeUrl: "https://shopee.vn/...", // link riêng của sản phẩm, bỏ trống thì dùng link shop
-  sections: ["spin360", "description", "buy", "gallery", "customCta", "feedback", "installation"],
+  // Không bán trên sàn, khách nhắn shop để đặt. Có bán thì thêm shopeeUrl / tiktokShopUrl
+  sections: ["spin360", "summary", "description", "buy", "gallery", "customCta", "feedback", "installation"],
 };

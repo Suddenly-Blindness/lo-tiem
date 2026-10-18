@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ImageBox } from "@/components/ui/ImageBox";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocalized } from "@/hooks/useLocalized";
+import { Price } from "@/components/ui/Price";
 import type { Product } from "@/types";
 
 export function ProductCard({ product }: { product: Product }) {
@@ -19,6 +20,7 @@ export function ProductCard({ product }: { product: Product }) {
       />
       <p className="text-caption mt-3 text-muted">{product.bikes.length ? product.bikes.join(" · ") : t("product.allBikes")}</p>
       <h3 className="text-h3 mt-1 group-hover:underline">{l(product.name)}</h3>
+      <Price price={product.price} className="mt-1 text-sm text-gray-700" />
     </Link>
   );
 }

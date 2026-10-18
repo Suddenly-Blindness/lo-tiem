@@ -19,12 +19,15 @@ export const opHongExciter155: Product = {
   category: "op-hong",
   bikes: ["Exciter 155"],
   featured: true,
+  price: 500_000, // giá ship COD, giá khởi điểm
   // Ảnh mock. Có ảnh thật thì đổi sang: numberedImages(slug, "gallery", <số ảnh>), spinImages(slug)…
   thumbnail: mockImages(1)[0],
   spinImages: mockSpin(),
   gallery: mockImages(3),
   feedback: mockImages(6),
   installation: mockInstallation(), // TODO: thay bằng hướng dẫn thật (xem file combo-scrambler-classic-xsr155.ts)
-  // shopeeUrl: "https://shopee.vn/...", // link riêng của sản phẩm, bỏ trống thì dùng link shop
-  sections: ["spin360", "description", "buy", "gallery", "customCta", "feedback", "installation"],
+  // Link sàn (mock). Chỉ hàng phổ biến mới bán trên sàn; bỏ 2 dòng này nếu sản phẩm chỉ bán qua tin nhắn
+  shopeeUrl: "https://shopee.vn/product/SHOP_ID/ITEM_ID",
+  tiktokShopUrl: "https://shop.tiktok.com/view/product/PRODUCT_ID",
+  sections: ["spin360", "summary", "description", "buy", "gallery", "customCta", "feedback", "installation"],
 };
