@@ -8,6 +8,7 @@ import { products } from "@/data/products";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocalized } from "@/hooks/useLocalized";
 import { ProductFilter } from "./ProductFilter";
+import { CustomSuggestion } from "./CustomSuggestion";
 import { ProductGrid } from "./ProductGrid";
 
 export function ProductListView() {
@@ -41,6 +42,7 @@ export function ProductListView() {
         />
       </div>
       {filtered.length ? <ProductGrid products={filtered} /> : <p className="text-muted">{t("products.empty")}</p>}
+      <CustomSuggestion />
     </Section>
   );
 }

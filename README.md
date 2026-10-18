@@ -25,7 +25,6 @@ lo-tiem/
 │       ├── mock/                     Ảnh tạm dùng chung khi chưa có ảnh thật
 │       ├── brand/                    Logo
 │       ├── home/                     banner.webp, custom.webp
-│       ├── custom/                   Ảnh các mẫu custom đã làm
 │       └── products/<slug>/
 │           ├── spin/                 01.webp … 08.webp (xoay giả 3D)
 │           ├── gallery/              Ảnh sản phẩm
@@ -52,11 +51,11 @@ lo-tiem/
     │   │   └── Spin360, Description, Gallery, Feedback, Installation,
     │   │       VideoEmbed, CustomCta, BuyButtons
     │   └── custom/                   CustomIntro, CustomProcess, CustomMethods,
-    │                                 CustomShowcase, CustomContact
+    │                                 CustomProducts, CustomContact
     ├── data/
     │   ├── site.ts                   Liên hệ, địa chỉ, map, link mạng xã hội
     │   ├── categories.ts             Loại sản phẩm, dòng xe (bộ lọc)
-    │   ├── custom.ts                 Mẫu custom đã làm
+    │   ├── colors.ts                 Màu sơn
     │   └── products/                 index.ts + mỗi sản phẩm một file <slug>.ts
     ├── i18n/                         translations.ts, locales/vi.json, en.json
     ├── contexts/ providers/ hooks/   LanguageProvider, useLanguage, useLocalized
@@ -72,12 +71,12 @@ lo-tiem/
 | Số điện thoại, địa chỉ, map, link Zalo/Facebook/TikTok/Shopee | `src/data/site.ts` |
 | Chữ trên giao diện (menu, tiêu đề, nút) | `src/i18n/locales/vi.json`, `en.json` |
 | Sản phẩm | `src/data/products/<slug>.ts` |
-| Mẫu custom đã làm | `src/data/custom.ts` + ảnh trong `public/images/custom/` |
+| Sản phẩm trên trang Custom | Sản phẩm có `category: "custom"` trong `src/data/products/` |
 | Màu | `src/styles/colors.css` |
 
 ## Thêm sản phẩm mới
 
-1. Copy `public/images/products/_mau/` thành `public/images/products/<slug>/` rồi bỏ ảnh `.webp` vào. Trong file data, đổi ảnh mock (`mockImages`, `mockSpin`) sang `numberedImages(slug, ...)`, `spinImages(slug)`. Chưa có ảnh thì cứ để ảnh mock.
+1. Tạo thư mục `public/images/products/<slug>/` gồm các thư mục con `spin/`, `gallery/`, `feedback/`, `install/` rồi bỏ ảnh `.webp` vào. Trong file data, đổi ảnh mock (`mockImages`, `mockSpin`) sang `numberedImages(slug, ...)`, `spinImages(slug)`. Chưa có ảnh thì cứ để ảnh mock.
 2. Copy `src/data/products/combo-scrambler-classic-xsr155.ts` thành `<slug>.ts`, sửa nội dung.
 3. Thêm sản phẩm vào mảng `products` trong `src/data/products/index.ts`.
 4. Sắp xếp `sections` để đổi thứ tự section; đặt `layout: "stacked"` hoặc một layout tự viết nếu cần giao diện khác.

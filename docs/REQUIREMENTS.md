@@ -69,6 +69,7 @@ Khách muốn mua thì:
 - Lọc theo nhóm sản phẩm (Ốp hông / chắn bùn hông, Custom, Ốp máy, Ốp phuộc, Combo) và theo dòng xe (XSR155, Exciter 155, MT-15, Winner, FZ150i)
 - Thứ tự nhóm trên bộ lọc giống thứ tự ở mục 4.1
 - Bấm vào card → trang chi tiết
+- Cuối danh sách (kể cả khi lọc không ra sản phẩm nào) có dòng gợi ý: "Không tìm thấy sản phẩm bạn muốn?" kèm nút "Gửi yêu cầu custom" → `/custom`
 
 ### 3.4 Chi tiết sản phẩm
 
@@ -97,17 +98,17 @@ Nội dung một sản phẩm:
 
 ### 3.5 Custom
 
-- Hướng dẫn quy trình custom: gửi ý tưởng → trao đổi và báo giá → thiết kế → chế tác → giao hàng
+- Hướng dẫn quy trình custom: gửi ý tưởng → trao đổi và báo giá → thiết kế → chế tác → giao hàng. Mỗi bước là một ô vuông vức nền xám nhạt: tên bước ở chính giữa, số thứ tự to màu trắng ở góc phải dưới (bị cắt bớt ở mép ô), không có mô tả. Mobile: lưới 2 cột, ô lẻ ở hàng cuối căn trái. Màn hình từ 640px là 3 cột, hàng cuối căn giữa. Không có mũi tên. Desktop: 5 ô trên một hàng, nối bằng mũi tên `>`
 - Mô tả các cách gửi yêu cầu custom:
   - Khách tự vẽ phác thảo và gửi ảnh
   - Khách mô tả yêu cầu bằng văn bản
   - Khách gửi ảnh tham khảo hoặc ảnh xe hiện tại
-- Gallery các mẫu custom đã làm
+- Danh sách sản phẩm thuộc nhóm Custom (`category: "custom"`, hiện có Ốp hông snap-in và Đầu đèn XSR155), dùng chung card với trang danh sách sản phẩm, bấm vào là sang trang chi tiết. Không có gallery ảnh rời: mẫu custom nào muốn giới thiệu thì tạo thành sản phẩm
 - CTA: nhắn Zalo / Facebook / TikTok để gửi yêu cầu. Không có form upload vì web tĩnh không có backend
 
 ### 3.6 Xem ảnh phóng to
 
-Mọi ảnh nội dung đều bấm vào được để xem phóng to: gallery sản phẩm, ảnh feedback, ảnh các bước lắp đặt, ảnh mẫu custom. Không áp dụng cho ảnh xoay 3D (đã dùng thao tác kéo để xoay) và ảnh banner.
+Mọi ảnh nội dung đều bấm vào được để xem phóng to: gallery sản phẩm, ảnh feedback, ảnh các bước lắp đặt. Không áp dụng cho ảnh xoay 3D (đã dùng thao tác kéo để xoay) và ảnh banner.
 
 - Bấm ảnh → mở lớp xem ảnh toàn màn hình, nền đen
 - Chuyển ảnh trước / sau trong cùng nhóm: nút mũi tên, phím ← →, vuốt ngang trên mobile
@@ -192,7 +193,6 @@ Dữ liệu khác:
 - `src/data/site.ts`: tên shop, slogan, số điện thoại, email, địa chỉ, link nhúng Google Maps, link Zalo / Facebook / TikTok / Shopee
 - `src/data/categories.ts`: nhóm sản phẩm và dòng xe dùng cho bộ lọc (XSR155, Exciter 155, MT-15, Winner, FZ150i)
 - `src/data/colors.ts`: danh sách màu sơn có sẵn (tên vi / en)
-- `src/data/custom.ts`: các mẫu custom đã làm (trang Custom)
 
 Video hướng dẫn nên đăng lên YouTube hoặc TikTok rồi nhúng vào trang, để repo nhẹ. Chỉ đặt file video vào `public/videos` khi file nhỏ.
 

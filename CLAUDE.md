@@ -29,7 +29,7 @@ Next 16 khác các bản cũ: `params` của page là `Promise`, phải `await`.
 - Route động phải có `generateStaticParams` và `dynamicParams = false`, như `src/app/san-pham/[slug]/page.tsx`.
 - Không có form gửi dữ liệu. Mọi liên hệ đi qua link mạng xã hội trong `src/data/site.ts`.
 - Ảnh dùng thẻ `<img>` thường, qua component `ImageBox` (`images.unoptimized: true`). Không dùng `next/image` cho ảnh sản phẩm.
-- Ảnh nội dung (gallery, feedback, bước lắp đặt, mẫu custom) phải bấm được để phóng to: `const { open, lightbox } = useLightbox(images, alt)` từ `src/components/ui/Lightbox.tsx`, truyền `onClick={() => open(i)}` cho `ImageBox` và render `{lightbox}`.
+- Ảnh nội dung (gallery, feedback, bước lắp đặt) phải bấm được để phóng to: `const { open, lightbox } = useLightbox(images, alt)` từ `src/components/ui/Lightbox.tsx`, truyền `onClick={() => open(i)}` cho `ImageBox` và render `{lightbox}`.
 - Feedback chỉ là danh sách ảnh xe khách (`feedback: string[]`), ẩn danh, không có tên hay nhận xét.
 - `trailingSlash: true`: link nội bộ viết có dấu `/` ở cuối (`/san-pham/`, `/custom/`).
 - Nội dung (sản phẩm, ảnh, feedback) nằm trong code. Không thêm CMS, database hay fetch dữ liệu từ ngoài.
@@ -38,14 +38,14 @@ Next 16 khác các bản cũ: `params` của page là `Promise`, phải `await`.
 
 - `src/app/`: route. Page chỉ ghép các section, không chứa giao diện chi tiết.
 - `src/components/<màn>/`: section theo từng màn (`home`, `product-list`, `product-detail`, `custom`). `layout/` là Header, Footer, SocialLinks. `ui/` là component dùng chung (`Section`, `Container`, `ButtonLink`, `ImageBox`). `icons/` là icon SVG.
-- `src/data/`: toàn bộ nội dung. `site.ts` (liên hệ, map, link mạng xã hội), `categories.ts`, `custom.ts`, `products/`.
+- `src/data/`: toàn bộ nội dung. `site.ts` (liên hệ, map, link mạng xã hội), `categories.ts`, `colors.ts`, `products/`. Trang Custom tự lấy sản phẩm có `category: "custom"`.
 - `src/types/`: `Product`, `SiteConfig`, `Localized`.
 - `src/i18n/`, `src/providers/`, `src/contexts/`, `src/hooks/`: đa ngôn ngữ.
 - `src/styles/`: `colors.css`, `typography.css`, `globals.css`.
 
 ### Trang chi tiết sản phẩm
 
-Mỗi sản phẩm là một file `src/data/products/<slug>.ts`, đăng ký trong `src/data/products/index.ts`. Ảnh nằm ở `public/images/products/<slug>/{spin,gallery,feedback,install}/`. Thư mục mẫu là `_mau/`. Sản phẩm chưa có ảnh thật dùng ảnh mock chung trong `public/images/mock/` qua `src/lib/mock-images.ts`. Không tạo thư mục ảnh rỗng hay `.gitkeep` cho từng sản phẩm.
+Mỗi sản phẩm là một file `src/data/products/<slug>.ts`, đăng ký trong `src/data/products/index.ts`. Ảnh nằm ở `public/images/products/<slug>/{spin,gallery,feedback,install}/`. Sản phẩm chưa có ảnh thật dùng ảnh mock chung trong `public/images/mock/` qua `src/lib/mock-images.ts`. Không tạo thư mục ảnh rỗng hay file `.gitkeep`: chỉ tạo thư mục khi có ảnh thật.
 
 - `product.sections`: danh sách section theo thứ tự hiển thị.
 - `product.layout`: tên layout trong `src/components/product-detail/layouts/index.ts` (`default`, `stacked`).

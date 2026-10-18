@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 
-import { CustomContact, CustomIntro, CustomMethods, CustomProcess, CustomShowcase } from "@/components/custom";
+import {
+  CustomContact,
+  CustomIntro,
+  CustomMethods,
+  CustomProcess,
+  CustomProducts,
+} from "@/components/custom";
 
 export const metadata: Metadata = { title: "Custom theo yêu cầu" };
 
@@ -10,7 +16,7 @@ export default function CustomPage() {
       <CustomIntro />
       <CustomProcess />
       <CustomMethods />
-      <CustomShowcase />
+      <CustomProducts />
       <CustomContact />
     </>
   );
